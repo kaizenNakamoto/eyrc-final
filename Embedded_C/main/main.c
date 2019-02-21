@@ -81,8 +81,8 @@ int main()
 	int present_node=0, next_node=0,t_count=0;
 	int switch_pressed = 0, mapped=0,size=0,an_count=0,hab_count=0,var=0,complete=0;
 	char *p;
-	char animal[]="F1, D6, C6";
-	char habit[]="20, 4, 25";
+	char animal[]="F1, C6, D6";
+	char habit[]="11, 4, 25";
 	path_fin=0;
 	halt=0;
 	defaulty();

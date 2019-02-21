@@ -82,7 +82,7 @@ void gripper_open()
 		servo_3(jj);
 		_delay_ms(10);
 	}
-	_delay_ms(250);
+	_delay_ms(300);
 }
 
 void gripper_close()
@@ -93,7 +93,7 @@ void gripper_close()
 		_delay_ms(10);
 	}
 	
-	_delay_ms(250);
+	_delay_ms(300);
 }
 
 void arm_rotate_left()
@@ -103,7 +103,7 @@ void arm_rotate_left()
 		servo_1(ii);
 		_delay_ms(10);
 	}
-	_delay_ms(250);
+	_delay_ms(300);
 }
 
 void arm_rotate_right()
@@ -113,7 +113,7 @@ void arm_rotate_right()
 		servo_1(ii);
 		_delay_ms(10);
 	}
-	_delay_ms(250);
+	_delay_ms(300);
 }
 void arm_straight()
 {
@@ -122,7 +122,7 @@ void arm_straight()
 		servo_1(ii);
 		_delay_ms(10);
 	}
-	_delay_ms(250);
+	_delay_ms(300);
 }
 
 void arm_forward()
@@ -132,7 +132,7 @@ void arm_forward()
 		servo_2(ii);
 		_delay_ms(10);
 	}
-	_delay_ms(250);
+	_delay_ms(300);
 	
 }
 
@@ -143,7 +143,7 @@ void arm_backward()
 		servo_2(ii);
 		_delay_ms(10);
 	}
-	_delay_ms(250);
+	_delay_ms(300);
 }
 
 void reset()
@@ -175,15 +175,15 @@ void left_cycle()
 {
 	
 	gripper_open();
-	_delay_ms(200);
+	_delay_ms(300);
 	arm_rotate_left();
-	_delay_ms(200);
+	_delay_ms(300);
 	arm_forward();
-	_delay_ms(200);
+	_delay_ms(300);
 	gripper_close();
-	_delay_ms(200);
+	_delay_ms(300);
 	arm_backward();
-	_delay_ms(200);
+	_delay_ms(300);
 
 }
 
@@ -191,21 +191,21 @@ void right_cycle()
 {
 
 	gripper_open();
-	_delay_ms(200);
+	_delay_ms(300);
 	arm_rotate_right();
-	_delay_ms(200);
+	_delay_ms(300);
 	arm_forward();
-	_delay_ms(200);
+	_delay_ms(300);
 	gripper_close();
-	_delay_ms(200);
+	_delay_ms(300);
 	arm_backward();
-	_delay_ms(200);
+	_delay_ms(300);
 	
 }
 void drop()
 {
 	servo_1(150);
-	_delay_ms(200);
+	_delay_ms(300);
 	
 	for(ii=0;ii<70;ii++)
 	{
@@ -213,22 +213,22 @@ void drop()
 		_delay_ms(10);
 
 	}
-	_delay_ms(200);
+	_delay_ms(300);
 	gripper_open();
-	_delay_ms(200);
+	_delay_ms(300);
 	servo_2(0);
-	_delay_ms(200);
+	_delay_ms(300);
 	
 }
 
 void front()
 {
 	gripper_open();
-	_delay_ms(200);
+	_delay_ms(300);
 	arm_forward();
-	_delay_ms(200);
+	_delay_ms(300);
 	gripper_close();
-	_delay_ms(200);
+	_delay_ms(300);
 	arm_backward();
-	_delay_ms(200);
+	_delay_ms(300);
 }

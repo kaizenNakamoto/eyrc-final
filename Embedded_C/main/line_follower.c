@@ -612,7 +612,7 @@ void pick_drop(char pd){
 			else if(pd=='8'){
 				front();
 				_delay_ms(200);
-				forward_mm(30);
+				//forward_mm(35);
 			}
 defaulty();
 }
@@ -726,7 +726,7 @@ void travel_path(char pos_val)
 		{
 			stop();
 			_delay_ms(20);
-			forward_mm(30);
+			forward_mm(20);
 			node++;
 			pick_drop(master_path[node]);
 			node++;
@@ -736,8 +736,6 @@ void travel_path(char pos_val)
 	else if(pos_val=='U'){
 		if(master_path[node+1]=='D'||master_path[node+1]=='1'||master_path[node+1]=='2'||master_path[node+1]=='3'||master_path[node+1]=='4'||master_path[node+1]=='5'||master_path[node+1]=='6'||master_path[node+1]=='7'||master_path[node+1]=='8')
 		{
-			stop();
-			_delay_ms(20);
 			correct_right3();
 			node++;
 			pick_drop(master_path[node]);
