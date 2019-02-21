@@ -255,10 +255,10 @@ void line_conditions()
 		line_cond = 3;
 	}
 
-        else if (Left_white_line > 10 && Center_white_line > 10 && Right_white_line < 11) // 1 1 0
-	{
-		line_cond = 6;//slighty_L
-	}
+        //else if (Left_white_line > 10 && Center_white_line > 10 && Right_white_line < 11) // 1 1 0
+	//{
+		//line_cond = 6;//slighty_L
+	//}
 
         
 	//Straight Line Condition (Robot moved slightly towards left)
@@ -267,10 +267,10 @@ void line_conditions()
 		line_cond = 4;
 	}
 
-        else if (Left_white_line < 11 && Center_white_line > 11 && Right_white_line > 11) // 0 1 1
-	{
-		line_cond = 7;//slighty_R
-	}
+        //else if (Left_white_line < 11 && Center_white_line > 11 && Right_white_line > 11) // 0 1 1
+	//{
+		//line_cond = 7;//slighty_R
+	//}
 
 	//No Line Condition
 	else if (Left_white_line < 11 && Center_white_line < 11 && Right_white_line < 11) // 0 0 0
@@ -355,7 +355,7 @@ void line_follow()
 
 		forward();
 
-		velocity(255,254);
+		velocity(255,255);
 
         node_flag = 0;
 
@@ -371,7 +371,7 @@ void line_follow()
 
         forward();
 
-        velocity(255, 254);
+        velocity(255, 255);
 
     } 
 
@@ -416,7 +416,8 @@ void line_follow()
        else if (line_cond == 6)
 
 	{
-        stop();_delay_ms(10);
+        stop();
+		_delay_ms(10);
 
         forward();
 
@@ -437,7 +438,7 @@ void line_follow()
 	else
 	{
 forward();
-velocity(255,254); }
+velocity(255,255); }
 
 
 }
@@ -497,26 +498,28 @@ void pick_drop(char pd){
 	defaulty();
 	stop();
 	_delay_ms(20);
-	if(master_path[node-1]=='L'||master_path[node-1]=='R'||master_path[node-1]=='U'){
+	if(master_path[node-1]=='L'||master_path[node-1]=='R'||master_path[node-1]=='U')
+	{
 	if(pd=='7'||pd=='6'||pd=='5')
-	back_mm(50);
+		back_mm(50);
 	else if(pd=='8')// To prevent too much back for front weird picks(soft left2)
 	{
 		back_mm(10);
 	}
 	else
-	back_mm(70);}
+	back_mm(70);
+	}
 	if(pd=='D'){
 		drop();
-		_delay_ms(300);
+		_delay_ms(200);
 	}
 	else if(pd=='1'){
 		left_cycle();
-		_delay_ms(300);
+		_delay_ms(200);
 	}
 	else if(pd=='2'){
 		right_cycle();
-		_delay_ms(300);
+		_delay_ms(200);
 	}
 	else if(pd=='3'){
 		stop();
@@ -527,28 +530,28 @@ void pick_drop(char pd){
 		stop();
 		_delay_ms(20);
 		front();
-		_delay_ms(20);
 		correct_right3();
-		_delay_ms(30);
+		_delay_ms(20);
 	}
 	else if(pd=='4'){
-		// first node
+		// first node- A1
 		if(master_path[node-1]=='N'){
 		forward_mm(35);
 		spl_left();
 		back_mm(25);
 		_delay_ms(20);
 		front();
+		_delay_ms(20);
 		forward_mm(25);
 		_delay_ms(20);
 		spl_right();
 		_delay_ms(20);
 		back_mm(20);
-		_delay_ms(300);}
+		_delay_ms(200);}
 		else
 		{
 			front();
-			_delay_ms(300);
+			_delay_ms(200);
 		}
 		
 	}
@@ -608,7 +611,8 @@ void pick_drop(char pd){
 		}
 			else if(pd=='8'){
 				front();
-				_delay_ms(300);
+				_delay_ms(200);
+				forward_mm(30);
 			}
 defaulty();
 }

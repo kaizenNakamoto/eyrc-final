@@ -82,7 +82,7 @@ void gripper_open()
 		servo_3(jj);
 		_delay_ms(10);
 	}
-	_delay_ms(200);
+	_delay_ms(250);
 }
 
 void gripper_close()
@@ -93,7 +93,7 @@ void gripper_close()
 		_delay_ms(10);
 	}
 	
-	_delay_ms(200);
+	_delay_ms(250);
 }
 
 void arm_rotate_left()
@@ -103,7 +103,7 @@ void arm_rotate_left()
 		servo_1(ii);
 		_delay_ms(10);
 	}
-	_delay_ms(300);
+	_delay_ms(250);
 }
 
 void arm_rotate_right()
@@ -113,7 +113,7 @@ void arm_rotate_right()
 		servo_1(ii);
 		_delay_ms(10);
 	}
-	_delay_ms(300);
+	_delay_ms(250);
 }
 void arm_straight()
 {
@@ -122,28 +122,28 @@ void arm_straight()
 		servo_1(ii);
 		_delay_ms(10);
 	}
-	_delay_ms(300);
+	_delay_ms(250);
 }
 
 void arm_forward()
 {
-	for(ii=0;ii<80;ii++)
+	for(ii=0;ii<90;ii++)
 	{
 		servo_2(ii);
 		_delay_ms(10);
 	}
-	_delay_ms(300);
+	_delay_ms(250);
 	
 }
 
 void arm_backward()
 {
-	for(ii=80;ii>0;ii--)
+	for(ii=90;ii>0;ii--)
 	{
 		servo_2(ii);
 		_delay_ms(10);
 	}
-	
+	_delay_ms(250);
 }
 
 void reset()
@@ -175,15 +175,15 @@ void left_cycle()
 {
 	
 	gripper_open();
-	_delay_ms(300);
+	_delay_ms(200);
 	arm_rotate_left();
-	_delay_ms(300);
+	_delay_ms(200);
 	arm_forward();
-	_delay_ms(300);
+	_delay_ms(200);
 	gripper_close();
-	_delay_ms(300);
+	_delay_ms(200);
 	arm_backward();
-	_delay_ms(300);
+	_delay_ms(200);
 
 }
 
@@ -191,44 +191,44 @@ void right_cycle()
 {
 
 	gripper_open();
-	_delay_ms(300);
+	_delay_ms(200);
 	arm_rotate_right();
-	_delay_ms(300);
+	_delay_ms(200);
 	arm_forward();
-	_delay_ms(300);
+	_delay_ms(200);
 	gripper_close();
-	_delay_ms(300);
+	_delay_ms(200);
 	arm_backward();
-	_delay_ms(300);
+	_delay_ms(200);
 	
 }
 void drop()
 {
 	servo_1(150);
-	_delay_ms(300);
+	_delay_ms(200);
 	
-	for(ii=0;ii<65;ii++)
+	for(ii=0;ii<70;ii++)
 	{
 		servo_2(ii);
 		_delay_ms(10);
 
 	}
-	_delay_ms(300);
+	_delay_ms(200);
 	gripper_open();
-	_delay_ms(300);
+	_delay_ms(200);
 	servo_2(0);
-	_delay_ms(300);
+	_delay_ms(200);
 	
 }
 
 void front()
 {
 	gripper_open();
-	_delay_ms(300);
+	_delay_ms(200);
 	arm_forward();
-	_delay_ms(300);
+	_delay_ms(200);
 	gripper_close();
-	_delay_ms(300);
+	_delay_ms(200);
 	arm_backward();
-	_delay_ms(300);
+	_delay_ms(200);
 }

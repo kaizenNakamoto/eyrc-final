@@ -1430,44 +1430,14 @@ void spl_right(){
 
 
 */
-void spl_left2(){// FOR FRONT PICK FROM LEFT DIRECTION
-	stop();
-	_delay_ms(20);
-	soft_left_2_degrees(30);
-	soft_left_2();
-	while(1){
-		read_line();
-		if(Center_white_line>25){
-			stop();
-			_delay_ms(20);
-			break;
-		}
-	}
-}
-void spl_right2(){//FOR FRONT WHEN BOT IS COMING FROM RIGHT
-	stop();
-	_delay_ms(20);
-	soft_right_2_degrees(30);
-	soft_right_2();
-	while(1){
-		read_line();
-		if(Center_white_line>25){
-			stop();
-			_delay_ms(20);
-			break;
-		}
-	}
-}
+
 void correct_left2()
-
 {   
-
     stop();
 	_delay_ms(50);
 	left_degrees(35);
 	left();
 	while(1)
-
 	{   
 		read_line();
 		if((Center_white_line > 14 && Right_white_line > 14)||(Center_white_line > 70))
@@ -1487,6 +1457,38 @@ void correct_left2()
 
 }
 
+// FOR FRONT PICK FROM LEFT DIRECTION
+void spl_left2()
+{
+	_delay_ms(20);
+	soft_left_2_degrees(30);
+	soft_left_2();
+	while(1){
+		read_line();
+		if(Center_white_line>25){
+			stop();
+			_delay_ms(20);
+			break;
+		}
+	}
+}
+//FOR FRONT WHEN BOT IS COMING FROM RIGHT
+void spl_right2()
+{
+	_delay_ms(20);
+	soft_right_2_degrees(30);
+	soft_right_2();
+	while(1)
+	{
+		read_line();
+		if(Center_white_line>25){
+			stop();
+			_delay_ms(20);
+			break;
+		}
+	}
+}
+
 void correct_right3()
 
 {   stop();
@@ -1495,9 +1497,11 @@ void correct_right3()
 	right();
 	while(1){
 		read_line();
-		if(Center_white_line>25){
+		if(Center_white_line>25)
+		{
 			stop();
-		break;}
+		break;
+		}
 	}
 	_delay_ms(40);
 	back_mm(40);
