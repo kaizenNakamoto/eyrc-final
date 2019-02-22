@@ -1303,7 +1303,8 @@ void correct_right2()
 
 		read_line();
 
-		if((Center_white_line > 14 && Left_white_line > 14)||(Center_white_line>71))
+		//if((Center_white_line > 14 && Left_white_line > 14)||(Center_white_line>71))
+		if(Center_white_line > 25)
 
 		{
 

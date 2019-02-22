@@ -355,7 +355,7 @@ void line_follow()
 
 		forward();
 
-		velocity(255,254);
+		velocity(255,255);
 
         node_flag = 0;
 
@@ -371,7 +371,7 @@ void line_follow()
 
         forward();
 
-        velocity(255, 254);
+        velocity(255, 255);
 
     } 
 
@@ -385,7 +385,7 @@ void line_follow()
 
         forward();
 
-        velocity(190, 255);
+        velocity(180, 255);
 
     } 
 
@@ -399,7 +399,7 @@ void line_follow()
 
         forward();
 
-        velocity(255, 190);
+        velocity(255, 180);
 
     } 
 
@@ -427,7 +427,8 @@ void line_follow()
         else if (line_cond == 7)
 
 	{
-        stop();_delay_ms(10);
+        stop();
+		_delay_ms(10);
 
         forward();
 
@@ -437,86 +438,105 @@ void line_follow()
 	else
 	{
 forward();
-velocity(255,254); }
+velocity(254,255); }
 
 
 }
-
-//void starting_pos(){
-	//servo_3(0);
-	//_delay_ms(1000);
-	//servo_2(0);
-	//_delay_ms(1000);
-	//servo_1(0);
-	//_delay_ms(1000);
-//}
-//
-//void left_pick(){
-	//starting_pos();
-	//servo_3(55);
-	//_delay_ms(1000);
-	//servo_2(80);
-	//_delay_ms(1000);
-	//starting_pos();
-//}
-//
-//void right_pick(){
-	//starting_pos();
-	//servo_1(180);
-	//_delay_ms(1000);
-	//servo_3(55);
-	//_delay_ms(1000);
-	//servo_2(80);
-	//_delay_ms(1000);
-	//starting_pos();
-//}
-//void front_pick(){
-	//starting_pos();
-	//servo_1(90);
-	//_delay_ms(1000);
-	//servo_3(55);
-	//_delay_ms(1000);
-	//servo_2(80);
-	//_delay_ms(1000);
-	//servo_2(0);
-	//_delay_ms(1000);
-	//starting_pos();
-//}
-//void drop_them(){
-//servo_1(180);
-//_delay_ms(1000);
-//servo_2(60);
-//_delay_ms(1000);
-//servo_3(55);
-//_delay_ms(1000);
-//starting_pos();
-//}
 
 
 void pick_drop(char pd){
 	defaulty();
 	stop();
 	_delay_ms(20);
-	if(master_path[node-1]=='L'||master_path[node-1]=='R'||master_path[node-1]=='U'){
-	if(pd=='7'||pd=='6'||pd=='5')
-	back_mm(50);
-	else if(pd=='8')// To prevent too much back for front weird picks(soft left2)
+	if(master_path[node-1]=='L'||master_path[node-1]=='R'||master_path[node-1]=='U')
 	{
-		back_mm(10);
+	if(pd=='7'||pd=='6'||pd=='5')
+		back_mm(50);
+	//else if(pd=='8')// To prevent too much back for front weird picks(soft left2)
+	//{
+		//back_mm(1);
+	//}
+	//else
+	//back_mm(1);
 	}
-	else
-	back_mm(70);}
 	if(pd=='D'){
+		back_mm(20);
+		_delay_ms(20);
 		drop();
-		_delay_ms(300);
+		_delay_ms(100);
 	}
-	else if(pd=='1'){
-		left_cycle();
-		_delay_ms(300);
+	if(master_path[node-1]=='U')
+	{
+		if(pd == '1')
+		{
+			forward_mm(40);
+			_delay_ms(20);
+			spl_left2();
+			_delay_ms(50);
+			front();
+			_delay_ms(100);
+			correct_right();
+			back_mm(70);
+			_delay_ms(20);
+		}
+		if(pd == '2')
+		{
+			forward_mm(40);
+			_delay_ms(20);
+			spl_right2();
+			_delay_ms(50);
+			front();
+			_delay_ms(100);
+			correct_left();
+			back_mm(70);
+			_delay_ms(20);
+		}
 	}
-	else if(pd=='2'){
-		right_cycle();
-		_delay_ms(300);
+	else if(pd=='1' && (master_path[node-1] == 'N'))
+	{
+		//left_cycle();
+		forward_mm(160);
+		_delay_ms(20);
+		spl_left2();
+		_delay_ms(50);
+		front();
+		_delay_ms(100);
+		correct_right();
+		back_mm(70);
+		_delay_ms(20);
+	}
+	else if(pd=='2' && (master_path[node-1] == 'N'))
+	{
+		//right_cycle();
+		forward_mm(160);
+		_delay_ms(20);
+		spl_right2();
+		_delay_ms(50);
+		front();
+		_delay_ms(100);
+		correct_left();
+		back_mm(70);
+		_delay_ms(20);
+	}
+	else if(pd=='1' && master_path[node-1] == 'R')
+	{
+		spl_left2();
+		_delay_ms(50);
+		front();
+		_delay_ms(100);
+		correct_right();
+		back_mm(70);
+		_delay_ms(20);	
+	}
+	else if(pd=='2' && master_path[node-1] == 'L')
+	{
+		spl_right2();
+		_delay_ms(50);
+		front();
+		_delay_ms(100);
+		correct_left();
+		back_mm(70);
+		_delay_ms(20);
 	}
 	else if(pd=='3'){
 		stop();
@@ -556,8 +576,8 @@ void pick_drop(char pd){
 			spl_right();
 			stop();
 			_delay_ms(20);
-			back_mm(25);
-			_delay_ms(20);
+			//back_mm(25);
+			//_delay_ms(20);
 			front();
 			_delay_ms(100);
 			forward_mm(25);
@@ -588,8 +608,8 @@ void pick_drop(char pd){
 				if(master_path[node-1]=='L'||master_path[node-1]=='R'){
 					stop();
 					_delay_ms(20);
-					//forward_mm(20);
-					//_delay_ms(20);
+					forward_mm(20);
+					_delay_ms(20);
 					front();
 					_delay_ms(100);
 					//_delay_ms(50);
@@ -608,7 +628,9 @@ void pick_drop(char pd){
 		}
 			else if(pd=='8'){
 				front();
-				_delay_ms(300);
+				_delay_ms(100);
+				forward_mm(60);
+				_delay_ms(20);
 			}
 defaulty();
 }

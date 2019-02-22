@@ -127,7 +127,7 @@ void arm_straight()
 
 void arm_forward()
 {
-	for(ii=0;ii<80;ii++)
+	for(ii=0;ii<90;ii++)
 	{
 		servo_2(ii);
 		_delay_ms(10);
@@ -138,7 +138,7 @@ void arm_forward()
 
 void arm_backward()
 {
-	for(ii=80;ii>0;ii--)
+	for(ii=90;ii>0;ii--)
 	{
 		servo_2(ii);
 		_delay_ms(10);

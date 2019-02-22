@@ -81,8 +81,8 @@ int main()
 	int present_node=0, next_node=0,t_count=0;
 	int switch_pressed = 0, mapped=0,size=0,an_count=0,hab_count=0,var=0,complete=0;
 	char *p;
-	char animal[]="D1, D6, A6";
-	char habit[]="20, 4, 20";
+	char animal[]="F2, A4, F6, F3";
+	char habit[]="15, 23, 20, 17";
 	path_fin=0;
 	halt=0;
 	defaulty();
@@ -137,7 +137,7 @@ int main()
 				while(!path_fin){
 					if(!halt){
 						line_follow();
-					_delay_ms(100);}
+					_delay_ms(50);}
 					//display_line();
 					//_delay_ms(20);
 				}
