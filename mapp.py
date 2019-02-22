@@ -84,14 +84,6 @@ def do_mapping(dic):
                                 occupied[i2] += 1
                                 break
 
-        final_animals = ", ".join(a)
-        final_habitats = ", ".join(h)
-        with open('final.txt', 'w') as f:
-                for j in final_habitats:
-                        f.write(j)
-                f.write("\n")
-                for i in final_animals:
-                        f.write(i)
 
         print("-------------------")
         print("Animal Association")
@@ -132,6 +124,14 @@ def do_mapping(dic):
         print("Final Animals list")
         print("-------------------")
         print(a)
+        final_animals = ", ".join(a)
+        final_habitats = ", ".join(h)
+        with open('final.txt', 'w') as f:
+                for j in final_habitats:
+                        f.write(j)
+                f.write("\n")
+                for i in final_animals:
+                        f.write(i)
 
 if __name__ == "__main__":
         dic = {'4': 'medium residential area', '1': 'basketball court', '15': 'snowberg', '11': 'medium residential area', '20': 'sparse residential area',

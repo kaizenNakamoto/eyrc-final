@@ -445,7 +445,7 @@ velocity(254,255); }
 
 
 void pick_drop(char pd){
-	int pdback=120;
+	int pdback=125;
 	defaulty();
 	stop();
 	_delay_ms(20);
@@ -456,12 +456,6 @@ void pick_drop(char pd){
 		back_mm(30);//mod
 		_delay_ms(20);//mod
 	}
-	else if(pd == '5') //F1
-	{
-		stop();
-		_delay_ms(1000);
-	}
-	
 	}
 	
 	if(pd=='D'){
@@ -487,7 +481,7 @@ void pick_drop(char pd){
 			else if(master_path[node-1] == 'N')
 			{
 					//left_cycle();
-					forward_mm(120);
+					forward_mm(140);
 					_delay_ms(20);
 					spl_left2();
 					_delay_ms(50);
@@ -504,7 +498,7 @@ void pick_drop(char pd){
 					front();
 					_delay_ms(100);
 					correct_right();
-					back_mm(pdback);
+					back_mm(70);
 					_delay_ms(20);
 				}
 		}
@@ -525,7 +519,7 @@ void pick_drop(char pd){
 			else if(master_path[node-1] == 'N')
 			{
 				//right_cycle();
-				forward_mm(120);
+				forward_mm(140);
 				_delay_ms(20);
 				spl_right2();
 				_delay_ms(50);
@@ -543,7 +537,7 @@ void pick_drop(char pd){
 				front();
 				_delay_ms(100);
 				correct_left();
-				back_mm(pdback);
+				back_mm(70);
 				_delay_ms(20);
 			}
 		}
@@ -568,31 +562,50 @@ void pick_drop(char pd){
 		if(master_path[node-1]=='N'){
 		forward_mm(35);
 		spl_left();
-		back_mm(25);
+		back_mm(50);
 		_delay_ms(20);
 		front();
-		forward_mm(25);
+		forward_mm(50);
 		_delay_ms(20);
 		spl_right();
 		_delay_ms(20);
-		back_mm(20);
+		back_mm(25);
 		_delay_ms(300);
 		}		
 	}
 	else if(pd=='5')//F1
-	{// 1X6 	delay_ms(20);//mod
+	{// 1X6 
+			if(master_path[node-1]=='U')
+			{
 			back_mm(20);
 			_delay_ms(20);
 			spl_right();
 			stop();
 			_delay_ms(20);
-			back_mm(20);
+			back_mm(50);
 			_delay_ms(20);
 			front();
 			_delay_ms(100);
-			forward_mm(25);
+			forward_mm(50);
 			_delay_ms(20);
 			spl_left();
+			}
+			else
+			{
+				_delay_ms(20);
+				forward_mm(55);
+				_delay_ms(20);
+				spl_right();
+				_delay_ms(20);
+				back_mm(20);
+				_delay_ms(20);
+				front();
+				_delay_ms(100);
+				forward_mm(20);
+				_delay_ms(20);
+				spl_left();
+				back_mm(20);
+			}			
 	}
 	else if(pd=='6'){// 6X1 A6
 		if(master_path[node-1]=='L'||master_path[node-1]=='R'){
@@ -606,6 +619,7 @@ void pick_drop(char pd){
 			forward_mm(35);
 			_delay_ms(20);
 			spl_left();
+			_delay_ms(20);
 			front();
 			_delay_ms(100);
 			right_degrees(50);
