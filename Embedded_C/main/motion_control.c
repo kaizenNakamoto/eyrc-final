@@ -1503,4 +1503,19 @@ void correct_right3()
 	_delay_ms(40);
 	back_mm(40);
 }
+void correct_left3()
+
+{   stop();
+	_delay_ms(20);
+	left_degrees(160);
+	left();
+	while(1){
+		read_line();
+		if(Center_white_line>25){
+			stop();
+		break;}
+	}
+	_delay_ms(40);
+	back_mm(40);
+}
 

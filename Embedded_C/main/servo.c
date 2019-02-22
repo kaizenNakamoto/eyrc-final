@@ -207,7 +207,7 @@ void drop()
 	servo_1(150);
 	_delay_ms(300);
 	
-	for(ii=0;ii<65;ii++)
+	for(ii=0;ii<75;ii++)
 	{
 		servo_2(ii);
 		_delay_ms(10);

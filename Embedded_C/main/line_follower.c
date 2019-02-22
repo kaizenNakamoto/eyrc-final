@@ -445,30 +445,35 @@ velocity(254,255); }
 
 
 void pick_drop(char pd){
+	int pdback=120;
 	defaulty();
 	stop();
 	_delay_ms(20);
 	if(master_path[node-1]=='L'||master_path[node-1]=='R'||master_path[node-1]=='U')
 	{
-	if(pd=='7'||pd=='6'||pd=='5')
-		back_mm(50);
-	//else if(pd=='8')// To prevent too much back for front weird picks(soft left2)
-	//{
-		//back_mm(1);
-	//}
-	//else
-	//back_mm(1);
+	if(pd=='7'||pd=='6')
+	{
+		back_mm(30);//mod
+		_delay_ms(20);//mod
 	}
+	else if(pd == '5') //F1
+	{
+		stop();
+		_delay_ms(1000);
+	}
+	
+	}
+	
 	if(pd=='D'){
-		back_mm(20);
-		_delay_ms(20);
+		if(master_path[node-1]!='N'){
+		back_mm(70);
+		_delay_ms(20);}
 		drop();
 		_delay_ms(100);
 	}
-	if(master_path[node-1]=='U')
-	{
-		if(pd == '1')
+		if(pd == '1' )//left animals
 		{
+			if(master_path[node-1]=='U'){
 			forward_mm(40);
 			_delay_ms(20);
 			spl_left2();
@@ -476,11 +481,37 @@ void pick_drop(char pd){
 			front();
 			_delay_ms(100);
 			correct_right();
-			back_mm(70);
+			back_mm(pdback);
 			_delay_ms(20);
+			}
+			else if(master_path[node-1] == 'N')
+			{
+					//left_cycle();
+					forward_mm(120);
+					_delay_ms(20);
+					spl_left2();
+					_delay_ms(50);
+					front();
+					_delay_ms(100);
+					correct_right();
+					back_mm(pdback);
+					_delay_ms(20);
+				}
+				else if(master_path[node-1] == 'R')
+				{
+					//spl_left2();
+					_delay_ms(50);
+					front();
+					_delay_ms(100);
+					correct_right();
+					back_mm(pdback);
+					_delay_ms(20);
+				}
 		}
-		if(pd == '2')
+		if(pd == '2')//right animals
 		{
+			if(master_path[node-1]=='U')
+			{
 			forward_mm(40);
 			_delay_ms(20);
 			spl_right2();
@@ -488,71 +519,52 @@ void pick_drop(char pd){
 			front();
 			_delay_ms(100);
 			correct_left();
-			back_mm(70);
+			back_mm(pdback);
 			_delay_ms(20);
+			}
+			else if(master_path[node-1] == 'N')
+			{
+				//right_cycle();
+				forward_mm(120);
+				_delay_ms(20);
+				spl_right2();
+				_delay_ms(50);
+				front();
+				_delay_ms(100);
+				correct_left();
+				back_mm(pdback);
+				_delay_ms(20);
+			}
+			
+			else if(master_path[node-1] == 'L')
+			{
+				//spl_right2();
+				_delay_ms(50);
+				front();
+				_delay_ms(100);
+				correct_left();
+				back_mm(pdback);
+				_delay_ms(20);
+			}
 		}
-	}
-	else if(pd=='1' && (master_path[node-1] == 'N'))
-	{
-		//left_cycle();
-		forward_mm(160);
-		_delay_ms(20);
-		spl_left2();
-		_delay_ms(50);
-		front();
-		_delay_ms(100);
-		correct_right();
-		back_mm(70);
-		_delay_ms(20);
-	}
-	else if(pd=='2' && (master_path[node-1] == 'N'))
-	{
-		//right_cycle();
-		forward_mm(160);
-		_delay_ms(20);
-		spl_right2();
-		_delay_ms(50);
-		front();
-		_delay_ms(100);
-		correct_left();
-		back_mm(70);
-		_delay_ms(20);
-	}
-	else if(pd=='1' && master_path[node-1] == 'R')
-	{
-		spl_left2();
-		_delay_ms(50);
-		front();
-		_delay_ms(100);
-		correct_right();
-		back_mm(70);
-		_delay_ms(20);	
-	}
-	else if(pd=='2' && master_path[node-1] == 'L')
-	{
-		spl_right2();
-		_delay_ms(50);
-		front();
-		_delay_ms(100);
-		correct_left();
-		back_mm(70);
-		_delay_ms(20);
-	}
-	else if(pd=='3'){
+					
+	else if(pd=='3')
+	{//back array
 		stop();
 		_delay_ms(20);
-		forward_mm(70);
-		correct_right3();
+		front();
 		_delay_ms(200);
-		stop();
-		_delay_ms(20);
-		front();
+		forward_mm(60);
 		_delay_ms(20);
 		correct_right3();
-		_delay_ms(30);
+		_delay_ms(20);
+		stop();
+		_delay_ms(20);
+		forward_mm(20);
+		_delay_ms(20);
 	}
-	else if(pd=='4'){
-		// first node
+	else if(pd=='4')
+	{	// first node
 		if(master_path[node-1]=='N'){
 		forward_mm(35);
 		spl_left();
@@ -564,27 +576,25 @@ void pick_drop(char pd){
 		spl_right();
 		_delay_ms(20);
 		back_mm(20);
-		_delay_ms(300);}
-		else
-		{
-			front();
-			_delay_ms(300);
-		}
-		
+		_delay_ms(300);
+		}		
 	}
-	else if(pd=='5'){// 1X6
+	else if(pd=='5')//F1
+	{// 1X6 	delay_ms(20);//mod
+			back_mm(20);
+			_delay_ms(20);
 			spl_right();
 			stop();
 			_delay_ms(20);
-			//back_mm(25);
-			//_delay_ms(20);
+			back_mm(20);
+			_delay_ms(20);
 			front();
 			_delay_ms(100);
 			forward_mm(25);
 			_delay_ms(20);
 			spl_left();
 	}
-	else if(pd=='6'){// 6X1
+	else if(pd=='6'){// 6X1 A6
 		if(master_path[node-1]=='L'||master_path[node-1]=='R'){
 			forward_mm(20);
 			_delay_ms(20);
@@ -604,11 +614,9 @@ void pick_drop(char pd){
 			_delay_ms(20);
 		}       
 	}
-		else if(pd=='7'){//6X6
+		else if(pd=='7'){//6X6 F6
 				if(master_path[node-1]=='L'||master_path[node-1]=='R'){
 					stop();
-					_delay_ms(20);
-					forward_mm(20);
 					_delay_ms(20);
 					front();
 					_delay_ms(100);
@@ -650,16 +658,17 @@ void travel_path(char pos_val)
 	{
 		if(node==0)
 		correct_right();
-		else if(master_path[node+1]=='D'||master_path[node+1]=='1'||master_path[node+1]=='2'||master_path[node+1]=='3'||master_path[node+1]=='4'||master_path[node+1]=='5'||master_path[node+1]=='6'||master_path[node+1]=='7'||master_path[node+1]=='8')
-		{
+		//else if(master_path[node+1]=='D'||master_path[node+1]=='1'||master_path[node+1]=='2'||master_path[node+1]=='3'||master_path[node+1]=='4'||master_path[node+1]=='5'||master_path[node+1]=='6'||master_path[node+1]=='7'||master_path[node+1]=='8')
+		else if(master_path[node+1]=='1'||master_path[node+1]=='2'||master_path[node+1]=='3'||master_path[node+1]=='4'||master_path[node+1]=='5'||master_path[node+1]=='6'||master_path[node+1]=='7'||master_path[node+1]=='8')
+		{//mod
 			stop();
-			if(master_path[node+1]=='7'||master_path[node+1]=='6')// TO ALLIGN TO NORTH SLANT LINE ONLY
+			if(master_path[node+1]=='7'||master_path[node+1]=='6')// TO ALIGN TO NORTH SLANT LINE ONLY
 			{
 				forward_mm(25);
 				_delay_ms(20);
 				correct_right();
 			}
-			else if(master_path[node+1]=='8'){
+			else if(master_path[node+1]=='8'){//if bot comes from right
 				stop();
 				_delay_ms(20);
 				forward_mm(160);
@@ -667,9 +676,30 @@ void travel_path(char pos_val)
 				 spl_right2();
 				_delay_ms(20);
 			}
+			else if(master_path[node+1] == '3')
+			{
+				stop();
+				_delay_ms(20);
+				forward_mm(160);
+				_delay_ms(20);
+				spl_left2();
+				_delay_ms(20);
+			}
 
 			else
+			{
+				stop();
+				_delay_ms(20);
+			}
+			node++;
+			pick_drop(master_path[node]);
+			node++;
+			travel_path(master_path[node]);
+		}
+		else if(master_path[node+1]=='D')//mod
+		{
 			correct_right();
+			_delay_ms(20);
 			node++;
 			pick_drop(master_path[node]);
 			node++;
@@ -689,8 +719,8 @@ void travel_path(char pos_val)
 		{
 			if(node==0)
 			correct_left();
-			else if(master_path[node+1]=='D'||master_path[node+1]=='1'||master_path[node+1]=='2'||master_path[node+1]=='3'||master_path[node+1]=='4'||master_path[node+1]=='5'||master_path[node+1]=='6'||master_path[node+1]=='7'||master_path[node+1]=='8')
-			{
+			else if(master_path[node+1]=='1'||master_path[node+1]=='2'||master_path[node+1]=='3'||master_path[node+1]=='4'||master_path[node+1]=='5'||master_path[node+1]=='6'||master_path[node+1]=='7'||master_path[node+1]=='8')
+			{//mod
 				if(master_path[node+1]=='7'||master_path[node+1]=='6')
 				{
 					forward_mm(25);
@@ -707,8 +737,29 @@ void travel_path(char pos_val)
 							spl_left2();
 							_delay_ms(20);
 						}
+						else if(master_path[node+1]=='3')
+						{
+						stop();
+						_delay_ms(20);
+						forward_mm(160);
+						_delay_ms(20);
+						spl_right2();
+						_delay_ms(20);
+						}						
 				else
+				{
+					stop();
+					_delay_ms(20);
+				}					
+				node++;
+				pick_drop(master_path[node]);
+				node++;
+				travel_path(master_path[node]);
+			}
+			else if(master_path[node+1]=='D')//mod
+			{
 				correct_left();
+				_delay_ms(20);
 				node++;
 				pick_drop(master_path[node]);
 				node++;
@@ -737,8 +788,22 @@ void travel_path(char pos_val)
 		else
 		forward();
 		}
+		//else if(master_path[node+1]=='N'||master_path[node+1]=='L'||master_path[node+1]=='R'||master_path[node+1]=='U')//drop same as pick
+		//{
+			//
+		//}
 		else if(master_path[node-1]=='D'||master_path[node-1]=='1'||master_path[node-1]=='2'||master_path[node-1]=='3'||master_path[node-1]=='4'||master_path[node-1]=='5'||master_path[node-1]=='6'||master_path[node-1]=='7'||master_path[node-1]=='8')
-		{   forward();
+		{  		if(master_path[node+1]=='D'||master_path[node+1]=='1'||master_path[node+1]=='2'||master_path[node+1]=='3'||master_path[node+1]=='4'||master_path[node+1]=='5'||master_path[node+1]=='6'||master_path[node+1]=='7'||master_path[node+1]=='8')
+			{
+				stop();
+				_delay_ms(20);
+				node++;
+				pick_drop(master_path[node]);
+				node++;
+				travel_path(master_path[node]);
+			}
+			else
+			 forward();
 		}
 		else
 		{
@@ -752,11 +817,33 @@ void travel_path(char pos_val)
 		}
 		}
 	else if(pos_val=='U'){
-		if(master_path[node+1]=='D'||master_path[node+1]=='1'||master_path[node+1]=='2'||master_path[node+1]=='3'||master_path[node+1]=='4'||master_path[node+1]=='5'||master_path[node+1]=='6'||master_path[node+1]=='7'||master_path[node+1]=='8')
+		if(master_path[node+1]=='D'||master_path[node+1]=='3'||master_path[node+1]=='4'||master_path[node+1]=='5'||master_path[node+1]=='6'||master_path[node+1]=='7'||master_path[node+1]=='8')
 		{
 			stop();
 			_delay_ms(20);
 			correct_right3();
+			node++;
+			pick_drop(master_path[node]);
+			node++;
+			travel_path(master_path[node]);
+		}
+		else if(master_path[node+1]=='1')
+		{
+			stop();
+			_delay_ms(20);
+			correct_left3();
+			_delay_ms(20);
+			node++;
+			pick_drop(master_path[node]);
+			node++;
+			travel_path(master_path[node]);
+		}
+		else if(master_path[node+1]=='2')
+		{
+			stop();
+			_delay_ms(20);
+			correct_right3();
+			_delay_ms(20);
 			node++;
 			pick_drop(master_path[node]);
 			node++;
