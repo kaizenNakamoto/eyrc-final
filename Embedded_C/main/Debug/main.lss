@@ -17623,8 +17623,8 @@ void pick_drop(char pd){
     7092:	09 f0       	breq	.+2      	; 0x7096 <pick_drop+0x3e4>
     7094:	f5 c2       	rjmp	.+1514   	; 0x7680 <pick_drop+0x9ce>
 		{
-			forward_mm(60);
-    7096:	8c e3       	ldi	r24, 0x3C	; 60
+			forward_mm(40);
+    7096:	88 e2       	ldi	r24, 0x28	; 40
     7098:	90 e0       	ldi	r25, 0x00	; 0
     709a:	0e 94 07 0e 	call	0x1c0e	; 0x1c0e <forward_mm>
     709e:	80 e0       	ldi	r24, 0x00	; 0
@@ -18487,8 +18487,8 @@ void pick_drop(char pd){
     768c:	11 f0       	breq	.+4      	; 0x7692 <pick_drop+0x9e0>
     768e:	0c 94 8d 62 	jmp	0xc51a	; 0xc51a <pick_drop+0x5868>
 		{
-			forward_mm(60);
-    7692:	8c e3       	ldi	r24, 0x3C	; 60
+			forward_mm(40);
+    7692:	88 e2       	ldi	r24, 0x28	; 40
     7694:	90 e0       	ldi	r25, 0x00	; 0
     7696:	0e 94 07 0e 	call	0x1c0e	; 0x1c0e <forward_mm>
     769a:	9e 01       	movw	r18, r28
