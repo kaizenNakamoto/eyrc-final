@@ -429,7 +429,4 @@ void lcd_print (char row, char coloumn, unsigned int value, int digits)
 		lcd_wr_char('E');
 
 	}
-
-	
-
 }

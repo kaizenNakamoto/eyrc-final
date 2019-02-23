@@ -22,9 +22,6 @@ volatile unsigned char flag = TRUE;
 unsigned char a = 0;
 unsigned char h = 0;
 
-//Function to configure LCD port
-
-
 void uart2_init(void)
 {
 	UCSR2B = 0x00; //disable while setting baud rate

@@ -437,14 +437,14 @@ void line_follow()
         }
 	else
 	{
-forward();
-velocity(254,255); }
-
-
+		forward();
+		velocity(254,255);
+	}
 }
 
 
-void pick_drop(char pd){
+void pick_drop(char pd)
+{
 	int pdback=125;
 	defaulty();
 	stop();
@@ -634,7 +634,6 @@ void pick_drop(char pd){
 					_delay_ms(20);
 					front();
 					_delay_ms(100);
-					//_delay_ms(50);
 				}
 				else{
 					forward_mm(35);
@@ -672,9 +671,8 @@ void travel_path(char pos_val)
 	{
 		if(node==0)
 		correct_right();
-		//else if(master_path[node+1]=='D'||master_path[node+1]=='1'||master_path[node+1]=='2'||master_path[node+1]=='3'||master_path[node+1]=='4'||master_path[node+1]=='5'||master_path[node+1]=='6'||master_path[node+1]=='7'||master_path[node+1]=='8')
 		else if(master_path[node+1]=='1'||master_path[node+1]=='2'||master_path[node+1]=='3'||master_path[node+1]=='4'||master_path[node+1]=='5'||master_path[node+1]=='6'||master_path[node+1]=='7'||master_path[node+1]=='8')
-		{//mod
+		{
 			stop();
 			if(master_path[node+1]=='7'||master_path[node+1]=='6')// TO ALIGN TO NORTH SLANT LINE ONLY
 			{
@@ -734,7 +732,7 @@ void travel_path(char pos_val)
 			if(node==0)
 			correct_left();
 			else if(master_path[node+1]=='1'||master_path[node+1]=='2'||master_path[node+1]=='3'||master_path[node+1]=='4'||master_path[node+1]=='5'||master_path[node+1]=='6'||master_path[node+1]=='7'||master_path[node+1]=='8')
-			{//mod
+			{
 				if(master_path[node+1]=='7'||master_path[node+1]=='6')
 				{
 					forward_mm(25);
@@ -802,10 +800,6 @@ void travel_path(char pos_val)
 		else
 		forward();
 		}
-		//else if(master_path[node+1]=='N'||master_path[node+1]=='L'||master_path[node+1]=='R'||master_path[node+1]=='U')//drop same as pick
-		//{
-			//
-		//}
 		else if(master_path[node-1]=='D'||master_path[node-1]=='1'||master_path[node-1]=='2'||master_path[node-1]=='3'||master_path[node-1]=='4'||master_path[node-1]=='5'||master_path[node-1]=='6'||master_path[node-1]=='7'||master_path[node-1]=='8')
 		{  		if(master_path[node+1]=='D'||master_path[node+1]=='1'||master_path[node+1]=='2'||master_path[node+1]=='3'||master_path[node+1]=='4'||master_path[node+1]=='5'||master_path[node+1]=='6'||master_path[node+1]=='7'||master_path[node+1]=='8')
 			{

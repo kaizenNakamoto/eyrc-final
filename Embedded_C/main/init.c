@@ -50,11 +50,11 @@ void port_init()
 
 	right_encoder_pin_config(); //Right Encoder pin configuration
 	
-	servo1_pin_config();
+	servo1_pin_config(); //Servo 1 pin configuration
 	
-	servo2_pin_config();
+	servo2_pin_config(); //Servo 2 pin configuration
 	
-	servo3_pin_config();
+	servo3_pin_config(); //Servo 3 pin configuration
 
 }
 
@@ -103,13 +103,13 @@ void init_devices(void)
 
 	//Initiate timers
 
-	timer1_init();
+	timer1_init(); //Initiate Timer 1
 
-	timer5_init();
+	timer5_init(); //Initiate Timer 5
 
-	timer3_init();
+	timer3_init(); //Initiate Timer 3
 
-	timer4_init();
+	timer4_init(); //Initiate Timer 4
 
 	
 
